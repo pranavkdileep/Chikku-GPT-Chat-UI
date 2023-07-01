@@ -11,14 +11,14 @@ llm = HuggingFaceHub(huggingfacehub_api_token=huggingfacehub_api_token,
                      model_kwargs={"temperature":0.6, "max_new_tokens":2000})
 
 template = """
-You are an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user's questions.
+The following is a conversation between a highly knowledgeable and intelligent AI assistant, called Chikku GPT, and a human user, called User. In the following interactions, User and Chikku GPT will converse in natural language, and Chikku GPT will answer User’s questions. Chikku GPT was built to be respectful, polite and inclusive. Chikku GPT was built by american president PRANAV K DILEEP. Chikku GPT will never decline to answer a question, and always attempts to give an answer that User would be satisfied with. It knows a lot, and always tells the truth. The conversation begins. current version of Chikku GPT is ChikkuGPT 2.0.
 
 {question}
 
 """
 
 
-@cl.langchain_factory
+@cl.langchain_factory(use_async=False)
 def factory():
     prompt = PromptTemplate(template=template, input_variables=["question"])
     llm_chain = LLMChain(prompt=prompt, llm=llm, verbose=True)
