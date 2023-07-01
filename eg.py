@@ -4,7 +4,7 @@ from gradio_client import Client
 import os
 
 def chat(question):
-    client = Client("http://127.0.0.1:7860/")
+    client = Client("https://pranavkdileep-chikku-gpt-2-0.hf.space/")
     result = client.predict(
         question,  # Input text
         api_name="/bot"
